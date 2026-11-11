@@ -16,7 +16,7 @@ public class App {
 	h.addServlet(RemoveToDoAppServlet.class,"/remove");
 	h.addServlet(ToDoAppServlet.class,"/app");
 	s.setHandler(h);
-	s.setStopAtShutDown(true);
+	s.setStopAtShutdown(true);
 	s.start();
 	s.join();
     }
