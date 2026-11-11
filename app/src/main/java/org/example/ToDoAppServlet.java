@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ToDoApp extends HttpServlet {
+public class ToDoAppServlet extends HttpServlet {
 	public static ArrayList<String> task = new ArrayList<>();
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -14,16 +14,18 @@ public class ToDoApp extends HttpServlet {
 		StringBuilder html = new StringBuilder();
 		html.append("<h1>Task List</h1>");
 		if (task.isEmpty()==false) {
-			for( String t : task) {
-				html.append("<ol><li>");
-				html.append(t);
-				html.append("</li></ol>");
+			for(int i=0;i<task.size();i++) {
+				html.append(i+1);
+				html.append(". ");
+				html.append(task.get(i));
+				html.append("          ");
 				html.append("<button onClick = \"window.location.href = '/remove?t=");
-				html.append(t);
-				html.append("' \"> -task </button>");
+				html.append(task.get(i));
+				html.append("'\"> - task </button>");
+				html.append("<br>");
 			}
 		}
-		html.append("<br><button onClick = \"window.location.href = '/add'\"> + task</button>");
+		html.append("<br><button onClick = \"window.location.href = '/add'\"> + task </button>");
 		res.getWriter().write(html.toString());
 	}
 }	
