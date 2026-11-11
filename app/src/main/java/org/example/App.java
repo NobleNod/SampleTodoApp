@@ -14,7 +14,7 @@ public class App {
 	h.setContextPath("/");
 	h.addServlet(AddToDoAppServlet.class,"/add");
 	h.addServlet(RemoveToDoAppServlet.class,"/remove");
-	h.addServlet(ToDoApp.class,"/app");
+	h.addServlet(ToDoAppServlet.class,"/app");
 	s.setHandler(h);
 	s.setStopAtShutDown(true);
 	s.start();
