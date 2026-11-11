@@ -18,7 +18,9 @@ public class ToDoApp extends HttpServlet {
 				html.append("<ol><li>");
 				html.append(t);
 				html.append("</li></ol>");
-				html.append("<button onClick = \"window.location.href = '/remove' \"> -task </button>");
+				html.append("<button onClick = \"window.location.href = '/remove?t=");
+				html.append(t);
+				html.append("' \"> -task </button>");
 			}
 		}
 		html.append("<br><button onClick = \"window.location.href = '/add'\"> + task</button>");
