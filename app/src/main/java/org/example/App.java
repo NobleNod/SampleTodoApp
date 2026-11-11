@@ -3,12 +3,21 @@
  */
 package org.example;
 
-public class App {
-    public String getGreeting() {
-        return "Hello India!";
-    }
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+public class App {
+
+    public static void main(String[] args) throws Exception{
+        Server s = new Server (8080);
+	ServletContextHandler h = new ServletContextHandler();
+	h.setContextPath("/");
+	h.addServlet(AddToDoAppServlet.class,"/add");
+	h.addServlet(RemoveToDoAppServlet.class,"/remove");
+	h.addServlet(ToDoApp.class,"/app");
+	s.setHandler(h);
+	s.setStopAtShutDown(true);
+	s.start();
+	s.join();
     }
 }
